@@ -436,7 +436,9 @@ export class Client extends EventEmitter {
 
     // Pass it to the right channel
     this.getChannel(cmd.channel).onCommand(cmd);
-
+     
+    // emit the message to client
+    this.emit('message', cmd);
     switch (cmd.body) {
       case 'closeChanRes':
         if (cmd.closeChanRes == null) {
